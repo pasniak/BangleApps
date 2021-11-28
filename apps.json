@@ -4468,7 +4468,7 @@
     "supports":["BANGLEJS2"],
     "storage": [
       {"name":"noaatides.app.js","url":"noaatides.app.js"},
-      {"name":"noaatides.img","url":"noaatides-icon.js","evaluate":true}
+      {"name":"noaatides.img","url":"noaatides.icon.js","evaluate":true}
     ]
   }
 
