@@ -18,9 +18,7 @@
         <input type="radio" name="station" value="9438772"><i class="form-icon"></i>Cathcart Landing, OR
       </label>
       <label class="form-input">
-        <td>
-          <input type="number" value="8531680" id="station_by_id" />
-        </td>
+          <input type="text" value="8531680" id="station_by_id" />
       </label>
     </div>
     <p>Click <button id="upload" class="btn btn-primary">Upload</button></p>
@@ -31,7 +29,7 @@
       // When the 'upload' button is clicked...
       document.getElementById("upload").addEventListener("click", function() {
         var radios = document.getElementsByName('station');
-        var station_by_id = document.getElementsByName('station_by_id');
+        var station_by_id = document.getElementsById('station_by_id');
         var range = 30*24; // 30 days
         var station = "8531680";
         for (var i=0; i<radios.length; i++)
