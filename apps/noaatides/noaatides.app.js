@@ -51,6 +51,6 @@ function printTides() {
 if (!tides) {
   E.showMessage("Missing noaatides.json file","NOAA Tides");
 } else {
-  printTides()
+  printTides();
 }
 
