@@ -34,7 +34,23 @@ function print(i, offset) {
   return false;
 }
 
-for (i=0; i<120; i++) {
-  g.clear();
-  if (print(i, 0) && print(i+1, 2)) break;
+function printTides() {
+  var is_something_printed = false;
+  for (i=0; i<120; i++) {
+    g.clear();
+    if (print(i, 0) && print(i+1, 2)) {
+      is_something_printed = true;
+      break;
+    }
+  }
+  if (!is_something_printed) {
+    E.showMessage("Stale data in noaatides.json file", "NOAA Tides");
+  }
 }
+
+if (!tides) {
+  E.showMessage("Missing noaatides.json file","NOAA Tides");
+} else {
+  printTides()
+}
+
