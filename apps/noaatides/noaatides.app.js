@@ -14,8 +14,7 @@ function YYYY_MM_DD(t) {
   return y+"-"+((m<10)?("0"+m):m)+"-"+((d<10)?("0"+d):d);
 }
 
-function print(i, offset) {
-
+function print(tides, i, offset) {
   var prediction = tides.predictions[i];
   var pTime = prediction.t;
   var pType = prediction.type;
@@ -34,11 +33,11 @@ function print(i, offset) {
   return false;
 }
 
-function printTides() {
+function printTides(tides) {
   var is_something_printed = false;
   for (i=0; i<120; i++) {
     g.clear();
-    if (print(i, 0) && print(i+1, 2)) {
+    if (print(tides, i, 0) && print(i+1, 2)) {
       is_something_printed = true;
       break;
     }
@@ -51,6 +50,6 @@ function printTides() {
 if (!tides) {
   E.showMessage("Missing noaatides.json file","NOAA Tides");
 } else {
-  printTides();
+  printTides(tides);
 }
 
