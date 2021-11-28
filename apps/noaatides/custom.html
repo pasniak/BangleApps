@@ -30,7 +30,7 @@
       document.getElementById("upload").addEventListener("click", function() {
         var radios = document.getElementsByName('station');
         var station_by_id = document.getElementById('station_by_id');
-        var range = 30*24; // 30 days
+
         var station = "8531680";
         for (var i=0; i<radios.length; i++)
           if (radios[i].checked)
@@ -39,7 +39,11 @@
             station = station_by_id.value
 
         console.log("Sending...");
-        var url = "https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&range="+range+"&datum=MLLW&station="+station+"&time_zone=lst_ldt&units=english&interval=hilo&format=json";
+
+        var begin_date = yyyymmdd()
+        var range = 30*24; // 30 days
+
+        var url = "https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date="+begin_date+"&range="+range+"&datum=MLLW&station="+station+"&time_zone=lst_ldt&units=english&interval=hilo&format=json";
         getData(url, function(jsResponse) {
           sendCustomizedApp({
             storage:[
@@ -61,6 +65,13 @@
         oReq.send();
       }
 
+      function yyyymmdd() {
+          var now = new Date();
+          var y = now.getFullYear();
+          var m = now.getMonth() + 1;
+          var d = now.getDate();
+          return '' + y + (m < 10 ? '0' : '') + m + (d < 10 ? '0' : '') + d;
+      }
     </script>
   </body>
 </html>

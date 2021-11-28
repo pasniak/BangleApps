@@ -2,24 +2,16 @@
 
 var tides = require("Storage").readJSON("noaatides.json");
 
-g.setFontAlign(0,0); // center font
+g.setFontAlign(0, 0); // center font
 g.setFont("Vector",18);
 
-var now = new Date();
-
-function YYYY_MM_DD(t) {
-  var y = t.getFullYear();
-  var m = t.getMonth()+1;
-  var d = t.getDate();
-  return y+"-"+((m<10)?("0"+m):m)+"-"+((d<10)?("0"+d):d);
-}
-
-function print(tides, i, offset) {
+function printOneTide(tides, i, offset) {
   var prediction = tides.predictions[i];
   var pTime = prediction.t;
   var pType = prediction.type;
 
-  var pDate = Date(Date.parse(pTime.replace(" ","T"))); // trick!
+  var now = new Date();
+  var pDate = Date(Date.parse(pTime.replace(" ", "T"))); // trick!
 
   // if prediction is in the future
   if (now < pDate) {
@@ -35,9 +27,9 @@ function print(tides, i, offset) {
 
 function printTides(tides) {
   var is_something_printed = false;
-  for (i=0; i<120; i++) {
-    g.clear();
-    if (print(tides, i, 0) && print(i+1, 2)) {
+  g.clear();
+  for (i=0; i<116; i++) {
+    if (printOneTide(tides, i, 0) && printOneTide(tides, i+1, 2)) {
       is_something_printed = true;
       break;
     }
@@ -52,4 +44,3 @@ if (!tides) {
 } else {
   printTides(tides);
 }
-
