@@ -4466,6 +4466,7 @@
     "tags": "tool,outdoors",
     "type": "app",
     "supports":["BANGLEJS2"],
+    "readme": "README.md",
     "custom": "custom.html",
     "storage": [
       {"name":"noaatides.app.js","url":"noaatides.app.js"},
