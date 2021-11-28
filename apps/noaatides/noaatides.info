@@ -1,0 +1,6 @@
+{
+  "id":"noaatides",
+  "name":"NOAA Tides",
+  "src":"noaatides.app.js",
+  "icon":"noaatides.img"
+}

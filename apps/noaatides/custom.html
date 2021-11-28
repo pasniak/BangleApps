@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../css/spectre.min.css">
+  </head>
+  <body>
+
+    <h2>NOAA Tides</h2>
+    <p></p>
+    <div class="form-group">
+      <label class="form-label">AGPS Validity time</label>
+      <label class="form-radio">
+        <input type="radio" name="agpsperiod" value="8531680"><i class="form-icon"></i>Sandy Hook
+      </label>
+    </div>
+    <p>Click <button id="upload" class="btn btn-primary">Upload</button></p>
+
+    <script src="../../core/lib/customize.js"></script>
+
+    <script>
+      // When the 'upload' button is clicked...
+      document.getElementById("upload").addEventListener("click", function() {
+        var radios = document.getElementsByName('agpsperiod');
+	var start = "20211127";
+	var end = "20211127";
+	var station = "8531680";
+        for (var i=0; i<radios.length; i++)
+          if (radios[i].checked)
+            station = radios[i].value
+
+        var url = "https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=NOS.COOPS.TAC.WL&begin_date="+start+"&end_date="+end+"&datum=MLLW&station="+station+"&time_zone=lst_ldt&units=english&interval=hilo&format=json";
+        console.log("Sending...");
+        //var text = document.getElementById("agpsperiod").value;
+        getData(url, function(js) {
+          sendCustomizedApp({
+            storage:[
+              {name:"RAM", content:js},
+            ]
+          });
+        });
+      });
+
+      function getData(url,callback) {
+        console.log("Loading "+url);
+        var oReq = new XMLHttpRequest();
+        oReq.addEventListener("load", function() {
+          var b64 = this.responseText;
+          console.log("Response received...");
+          callback(b64);
+        });
+        oReq.open("GET", url);
+        oReq.send();
+      }
+
+    </script>
+  </body>
+</html>
