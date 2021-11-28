@@ -4462,10 +4462,11 @@
     "shortName":"Tides",
     "icon": "noaatides.png",
     "version":"0.01",
-    "description": "Show tides at locations in USA using NOAA Tides Predictions data",
+    "description": "Show tides at a location in USA using 1 month of NOAA Tides Predictions data (tidesandcurrents.noaa.gov)",
     "tags": "tool,outdoors",
     "type": "app",
     "supports":["BANGLEJS2"],
+    "custom": "custom.html",
     "storage": [
       {"name":"noaatides.app.js","url":"noaatides.app.js"},
       {"name":"noaatides.img","url":"noaatides.icon.js","evaluate":true}
