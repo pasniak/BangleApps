@@ -4458,12 +4458,12 @@
     ]
   },
   { "id": "noaatides",
-    "name": "NoaaTides",
+    "name": "NOAA Tides",
     "shortName":"Tides",
     "icon": "noaatides.png",
     "version":"0.01",
     "description": "Show tides at locations in USA using NOAA Tides Predictions data",
-    "tags": "tool",
+    "tags": "tool,outdoors",
     "type": "app",
     "supports":["BANGLEJS2"],
     "storage": [
